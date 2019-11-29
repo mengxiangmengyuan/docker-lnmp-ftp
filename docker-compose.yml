@@ -1630,7 +1630,7 @@ services:
         - ${DATA_PATH_HOST}/Confluence:/var/atlassian/application-data
 
 ### PURE - FTPD ########################################### 
-    pftpd:
+    ftp:
       image: stilliard/pure-ftpd:${PURE_FTPD_VERSION}
       ports:
         - "21:21"
