@@ -1628,3 +1628,22 @@ services:
         - postgres
       volumes:
         - ${DATA_PATH_HOST}/Confluence:/var/atlassian/application-data
+
+### PURE - FTPD ########################################### 
+    pftpd:
+      image: stilliard/pure-ftpd:${PURE_FTPD_VERSION}
+      ports:
+        - "21:21"
+        - "30000-30009:30000-30009"
+      volumes: 
+        - ${APP_CODE_PATH_HOST}:/home/ftpuser
+        - ${DATA_PATH_HOST}/pure-ftpd:/etc/pure-ftpd/passwd
+      environment:
+        PUBLICHOST: "localhost"
+        FTP_USER_NAME: ${FTP_USER}
+        FTP_USER_PASS: ${FTP_PASSWORD}
+        FTP_USER_HOME: /home/ftpuser
+        FTP_USER_UID: ${PHP_WORKER_PUID}
+        FTP_USER_GID: ${PHP_WORKER_PGID}
+      networks:
+        - frontend
