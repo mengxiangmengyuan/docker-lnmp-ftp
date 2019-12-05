@@ -158,14 +158,14 @@ services:
         - "21:21"
         - "30000-30009:30000-30009"
       volumes: 
-        - ${APP_CODE_PATH_HOST}:/home/ftpuser
+        - ${APP_CODE_PATH_HOST}:/home/wwwuser
         - ${DATA_PATH_HOST}/pure-ftpd:/etc/pure-ftpd/passwd
       restart: always
       environment:
         PUBLICHOST: "localhost"
         FTP_USER_NAME: ${FTP_USER}
         FTP_USER_PASS: ${FTP_PASSWORD}
-        FTP_USER_HOME: /home/ftpuser
+        FTP_USER_HOME: /home/wwwuser
         FTP_USER_UID: ${PHP_WORKER_PUID}
         FTP_USER_GID: ${PHP_WORKER_PGID}
       networks:
